@@ -1,3 +1,5 @@
+const { calculateAge } = require("./module");
+
 /**
  * Custom error used for all validation failures.
  * @class
@@ -28,15 +30,7 @@ function validateAge(birthDate) {
         throw new ValidationError("INVALID_DATE", "Invalid birth date");
     }
 
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-
-    const birthdayPassed =
-        today.getMonth() > birthDate.getMonth() ||
-        (today.getMonth() === birthDate.getMonth() &&
-            today.getDate() >= birthDate.getDate());
-
-    if (!birthdayPassed) age--;
+    const age = calculateAge({ birth: birthDate });
 
     if (age < 18) {
         throw new ValidationError("UNDERAGE", "User must be at least 18");
