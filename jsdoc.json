@@ -1,0 +1,10 @@
+{
+    "source": {
+        "include": [
+            "validator.js"
+        ]
+    },
+    "opts": {
+        "destination": "./docs"
+    }
+}
